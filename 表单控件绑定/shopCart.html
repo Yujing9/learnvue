@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">{{test}}
+        <div>
+            <input type="checkbox" v-model="checkList" value="苹果">
+            <label for="">苹果</label>
+            <img src="" alt="苹果">
+            <button @click ="sub">-</button>
+            {{count}}
+            <button @click="add">+</button>
+            <span>单价:10</span>
+            <span v-model="calculate()">总价:{{total}}</span>
+        </div>
+        <div>
+            总金额：<span>{{total}}</span>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                test:"hello world",
+                count :0,
+                total:0,
+                checkList:[]
+            },
+            methods:{
+                add(){
+                    if(this.count>=10){
+                        alert("不能再加了")
+                        return
+                    }
+                    this.count++
+                },
+                sub(){
+                    if(this.count<=0){
+                        alert("不能再减了")
+                        return
+                    }
+                    this.count--
+                },
+                calculate(){
+                    this.total=this.count*10
+                }
+            }
+        })
+    </script>
+</body>
+</html>
